@@ -20,7 +20,21 @@ header{background:var(--header);border-bottom:1px solid var(--line)}.brandmark{b
 main{padding-top:14px}.map-legend{position:absolute;left:14px;bottom:14px;z-index:600;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:color-mix(in srgb,var(--surface-raised) 95%,transparent);box-shadow:0 6px 22px #0008;color:var(--ink);backdrop-filter:blur(8px)}.legend-title{font-size:9px;font-weight:900;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}.legend-items{display:flex;flex-direction:column;gap:6px;font-size:10px;color:var(--ink)}.legend-items span{display:flex;align-items:center;gap:7px}.legend-dot{width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;border:1.5px solid var(--page);font-size:8px;font-style:normal;font-weight:900;color:var(--marker-text);box-shadow:0 2px 6px #0007}.legend-dot.single{background:var(--marker-single)}.legend-dot.multiple{background:var(--marker-multiple)}.legend-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0;padding:0;border-top:0}.legend-footer .theme-label{margin:0}.legend-footer .theme-picker{gap:8px}.theme-swatch{width:18px;height:18px}.map-state-control{top:14px;right:14px}.leaflet-control-attribution{display:none!important}@media(max-width:520px){main{padding:8px 0 0}.map-legend{left:9px;bottom:9px;padding:7px 9px}.legend-footer{margin:0;padding:0}.map-state-control{top:9px;right:9px;width:min(230px,calc(100% - 58px))}}/* The embed view follows the iframe viewport instead of fixed page dimensions. */
 html{height:100%}.embed-mode{width:100%;height:100vh;height:100dvh;min-height:0;overflow:hidden}.embed-mode main{width:100%;height:100%;min-height:0;margin:0;padding:0;max-width:none;display:flex;flex-direction:column}.embed-mode .workspace{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,.78fr);flex:1 1 auto;width:100%;height:100%;min-height:0;border:0;border-radius:0;box-shadow:none;overflow:hidden}.embed-mode .mapwrap{height:100%;min-width:0;min-height:0}.embed-mode #map{width:100%;height:100%;min-height:0}.embed-mode .places{min-width:0;min-height:0;max-height:none}.embed-mode .cards{flex:1 1 auto;min-height:0;max-height:none;overflow:auto}.embed-mode .map-legend{max-width:calc(100% - 26px)}@media(max-width:720px){.embed-mode .workspace{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(180px,55%) minmax(0,45%)}.embed-mode .mapwrap{height:auto;border-right:0;border-bottom:1px solid var(--line)}.embed-mode .places{max-height:none}.embed-mode .cards{max-height:none}.embed-mode .places-head{padding:9px 12px 8px}.embed-mode .places-title{font-size:16px}.embed-mode .places-summary{font-size:10px}}
 .leaflet-popup-content b{display:block;padding-right:26px;margin-bottom:2px}
-</style>
+/* Right-side reading hierarchy */
+.places{background:var(--page)}
+.places-head{padding:20px 18px 16px;background:var(--surface-raised);border-bottom-color:var(--line)}
+.places-overline{font-size:9px;letter-spacing:.16em;color:var(--green)}
+.places-title{font-size:22px;line-height:1.12;letter-spacing:-.035em;margin-top:6px}
+.places-summary{font-size:11px;line-height:1.45;color:var(--muted);margin-top:6px}
+.cards{padding:8px 13px 15px}
+.card{grid-template-columns:60px minmax(0,1fr);gap:12px;margin:4px 0;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);transition:background .16s,border-color .16s}
+.card:hover,.card.active{background:var(--surface-raised);border-color:var(--green)}
+.thumb{width:60px;height:48px;border-color:var(--line);border-radius:7px}
+.venue-name{font-size:12px;font-weight:800;color:var(--ink)}
+.venue-meta{font-size:10.5px;line-height:1.35;color:var(--muted);margin-top:5px}
+.city-group-title{padding:11px 6px 6px;color:var(--green);font-size:10px;letter-spacing:.06em}
+.city-group-count{padding:3px 7px;border-radius:999px;background:var(--surface-raised);color:var(--muted);font-size:9px;letter-spacing:0;opacity:1}
+@media(max-width:520px){.places-head{padding:14px}.cards{padding:7px 9px 12px}.card{grid-template-columns:51px minmax(0,1fr);gap:9px;padding:8px}.thumb{width:51px;height:42px}.places-title{font-size:19px}}</style>
 </head>
 <body>
 
