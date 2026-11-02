@@ -268,8 +268,18 @@ function focusPlace(id) {
     card.classList.toggle('active', Number(card.dataset.id) === id);
   });
   cards.querySelector(`.card[data-id="${id}"]`)?.scrollIntoView({ block: 'nearest' });
-  map.flyTo([place.lat, place.lng], Math.max(map.getZoom(), 8), { duration: 0.45 });
-  cityMarkers.get(`${place.state}:${place.lat.toFixed(3)}:${place.lng.toFixed(3)}`)?.openPopup();
+  const markerKey = `${place.state}:${place.lat.toFixed(3)}:${place.lng.toFixed(3)}`;
+  const target = L.latLng(place.lat, place.lng);
+  const targetZoom = Math.max(map.getZoom(), 8);
+  const openPopup = () => cityMarkers.get(markerKey)?.openPopup();
+
+  if (map.getZoom() === targetZoom && map.getCenter().distanceTo(target) < 1) {
+    openPopup();
+    return;
+  }
+
+  map.once('moveend', openPopup);
+  map.flyTo(target, targetZoom, { duration: 0.45 });
 }
 fetch('./states.geojson').then(r=>{if(!r.ok)throw Error('state boundaries unavailable');return r.json()}).then(data=>{geoData=data;const geo=L.geoJSON(data,{style:styleState,onEachFeature:(feature,layer)=>{const code=stateCodes[String(feature.properties.codarea)];if(!code)return;stateLayers.set(code,layer);if(!places.some(p=>p.state===code)){layer.options.interactive=false;return;}layer.bindTooltip(stateNames[code],{sticky:true,direction:'top'});layer.on({click:()=>showState(selectedState===code?'all':code),mouseover:e=>{const cs=getComputedStyle(document.body),active=selectedState===code;e.target.setStyle({weight:active?4.2:2.6,color:cs.getPropertyValue('--lime').trim(),fillColor:active?cs.getPropertyValue('--state-active').trim():cs.getPropertyValue('--hover').trim(),fillOpacity:1})},mouseout:e=>geo.resetStyle(e.target)});}}).addTo(statesLayer);const initialViewRevision=viewRevision;/* Wait for the iframe layout before constraining and fitting the map. */requestAnimationFrame(()=>requestAnimationFrame(()=>{map.invalidateSize({pan:false});constrainMap();if(viewRevision!==initialViewRevision)return;showState(selectedState);if(selectedState==='all')fitBrazil();}));}).catch(()=>{document.getElementById('map').setAttribute('aria-label','Os limites estaduais não puderam ser carregados.');});stateSelect.addEventListener('change',()=>showState(stateSelect.value));map.on('popupopen',e=>e.popup.getElement()?.querySelectorAll('.venue-link').forEach(b=>b.addEventListener('click',()=>focusPlace(Number(b.dataset.id)))));map.on('zoomend',renderCityMarkers);
 const modal=document.getElementById('embedModal'),embedBaseUrl=`${location.origin}${location.pathname}`,embedCode=document.getElementById('embedCode');function updateEmbedCode(){const params=new URLSearchParams({embed:'1',theme:document.body.dataset.theme||'blue'}),embedUrl=`${embedBaseUrl}?${params}`;embedCode.value=`<iframe src="${embedUrl}" title="Mapa de locals da FGC no Brasil" loading="lazy" style="width:100%;height:680px;border:0;border-radius:8px"></iframe>`;}updateEmbedCode();document.querySelectorAll('[data-theme-choice]').forEach(b=>b.addEventListener('click',updateEmbedCode));document.getElementById('embedOpen')?.addEventListener('click',()=>{updateEmbedCode();modal.classList.add('open')});document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('open'));modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});document.getElementById('copyCode').addEventListener('click',async()=>{const b=document.getElementById('copyCode');try{await navigator.clipboard.writeText(embedCode.value)}catch{embedCode.select();document.execCommand('copy')}b.textContent='Copiado!';setTimeout(()=>b.textContent='Copiar código',1600)});
