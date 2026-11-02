@@ -35,6 +35,8 @@ Exemplo de iframe:
 
 Troque `blue` por `red` ou `yellow` para definir outro tema. Cada embed inicia no tema indicado na URL.
 
+Para ocultar o seletor de tema no embed, acrescente `hide=theme` à URL. O tema indicado em `theme` continua sendo aplicado, mas o controle não aparece. Exemplo: `?embed=1&theme=blue&hide=theme`.
+
 ## Como adicionar um local
 
 Os registros ficam no array `places`, dentro de `dist/index.html`. Cada linha usa este formato:
