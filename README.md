@@ -2,7 +2,7 @@
 
 ## Locals da FGC no Brasil
 
-Mapa comunitário de eventos e comunidades de jogos de luta no Brasil. As posições são aproximadas pelo município informado nas referências.
+Mapa comunitário das locals de jogos de luta no Brasil. As posições são aproximadas pelo município informado nas referências.
 
 ## Acesso e incorporação
 
