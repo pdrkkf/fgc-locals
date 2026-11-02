@@ -1,5 +1,7 @@
 # Viver é lutar, lutar é viver!
 
+![Tela inicial do mapa da FGC no Brasil](docs/mapa-inicial.png)
+
 ## Locals da FGC no Brasil
 
 Mapa comunitário das locals de jogos de luta no Brasil. As posições são aproximadas pelo município informado nas referências.
@@ -19,14 +21,14 @@ Para abrir o mapa em modo compacto, use `?embed=1`. O tema inicial é configurad
 Exemplo de URL:
 
 ```text
-https://<usuario>.github.io/<repositorio>/?embed=1&theme=red
+https://pdrkkf.github.io/fgc-locals/?embed=1&theme=red
 ```
 
 Exemplo de iframe:
 
 ```html
 <iframe
-  src="https://<usuario>.github.io/<repositorio>/?embed=1&theme=blue"
+  src="https://pdrkkf.github.io/fgc-locals/?embed=1&theme=blue"
   title="Mapa de locals da FGC no Brasil"
   loading="lazy"
   style="width:100%;height:680px;border:0;border-radius:8px"
