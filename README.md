@@ -43,50 +43,43 @@ https://pdrkkf.github.io/fgc-locals/?embed=1&theme=blue&hide=theme
 
 ## Como adicionar um local
 
-Os registros ficam no array `places`, dentro de `dist/index.html`. Cada linha usa este formato:
+Os registros ficam no array `places`, em `dist/places.js`. Adicione um objeto ao final, com um ID novo e um `imageSlug` que corresponda ao nome do arquivo da logo.
 
 ```js
-[id, nome, cidade, UF, parte, latitude, longitude]
+{
+  id: 41,
+  name: 'Nova Local',
+  city: 'Belo Horizonte',
+  state: 'MG',
+  sourcePart: 1,
+  lat: -19.9167,
+  lng: -43.9345,
+  imageSlug: 'nova-local'
+}
 ```
 
-Exemplo:
-
-```js
-[41, 'Nova Local', 'Belo Horizonte', 'MG', 1, -19.9167, -43.9345]
-```
-
-Preencha os campos assim:
-
-| Campo | O que informar |
-| --- | --- |
-| `id` | Número único e crescente. Não reutilize IDs existentes. |
-| `nome` | Nome público da comunidade ou do evento local. |
-| `cidade` | Município que deve aparecer no diretório. Use o mesmo nome em registros da mesma cidade. |
-| `UF` | Sigla oficial do estado, em maiúsculas, como `MG` ou `SP`. |
-| `parte` | Número da parte/referência de onde veio o registro, quando aplicável. É mantido nos dados, mas não altera a interface. |
-| `latitude`, `longitude` | Coordenadas decimais aproximadas do município. Latitude sul e longitude oeste são negativas. |
+Use o município indicado pela referência e coordenadas aproximadas desse município. Latitude sul e longitude oeste são negativas. Se a abrangência ou localização ainda não estiver confirmada, preserve o nome disponível e registre `locationScope: 'unverified'`; não presuma que seja uma capital. `source` e `verifiedAt` podem ser incluídos quando houver uma fonte e uma data de verificação confiáveis.
 
 ### Logo do local
 
-1. Prepare a imagem em WebP, com **480 × 360 px**. Recorte margens excessivas; use transparência quando combinar com a logo.
-2. Salve em `dist/assets/poi-images/` como `poi-<id com 2 dígitos>-<slug>.webp`. Exemplo: `poi-41-nova-local.webp`.
-3. Adicione o mesmo slug ao array `poiImageSlugs`, na mesma posição do local em `places`.
+Salve a logo em WebP, com **480 × 360 px**, em `dist/assets/poi-images/`. Recorte margens excessivas e use transparência quando combinar com a imagem. Para o exemplo, o arquivo será `poi-41-nova-local.webp`. O slug em `imageSlug` associa a imagem diretamente ao registro, sem depender da posição no array.
 
-O `manifest.json` é apenas um catálogo e não é necessário para o mapa carregar a imagem. Atualize-o se quiser registrar a origem da logo.
+`dist/assets/poi-images/manifest.json` cataloga as imagens e suas origens; atualize a entrada correspondente quando adicionar uma logo. Registre a origem real do material e os limites do recorte quando conhecidos.
 
-### Informações para registrar
-
-Inclua o nome do local, cidade, UF, coordenadas e a parte da referência, quando houver. Para manter o diretório confiável, confira a cidade e a localização antes de adicionar. Registre a origem da informação e da imagem para que os créditos possam ser mantidos.
+Cada registro mantém o campo `sourcePart` para a referência de origem disponível no projeto. Não invente links, datas de verificação nem fontes ausentes.
 
 ## Estrutura principal
 
 ```text
 dist/
-├── index.html                   # Interface, dados dos locals e slugs das logos
+├── index.html                   # Interface e carregamento de recursos
+├── styles.css                   # Temas e estilos responsivos
+├── app.js                       # Mapa, interação, filtros e marcadores
+├── places.js                    # Registros dos locais
 ├── states.geojson               # Limites estaduais usados pelo mapa
 └── assets/poi-images/
     ├── manifest.json            # Índice, dimensões e origem das logos
-    └── poi-*.webp               # Logos otimizadas dos locais
+    └── poi-*.webp               # Logos dos locais
 .github/workflows/pages.yml      # Publicação automática no GitHub Pages
 LICENSE                          # Licença MIT do código e da documentação
 THIRD_PARTY_NOTICES.md           # Aviso e licença da biblioteca Leaflet

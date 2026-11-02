@@ -1,7 +1,46 @@
-const places=[
-[1,'Cosmic Zone','Rio de Janeiro','RJ',1,-22.9068,-43.1729],[2,'Mini Major','São Paulo','SP',1,-23.5505,-46.6333],[3,'Tretinha','Curitiba','PR',1,-25.4284,-49.2733],[4,'Arena Ultra Arcade','Belo Horizonte','MG',1,-19.9167,-43.9345],[5,'R-DASH','Recife','PE',1,-8.0476,-34.8770],[6,'ARC-AJU','Aracaju','SE',1,-10.9472,-37.0731],[7,'Nit Fighter','Niterói','RJ',1,-22.8832,-43.1034],[8,'ARCADEMIA','Curitiba','PR',1,-25.4284,-49.2733],[9,'Blame the Beasts','Campinas','SP',1,-22.9056,-47.0608],[10,'Capixaba OFF','Espírito Santo','ES',1,-20.3155,-40.3128],
-[11,'NaSC','Natal','RN',2,-5.7793,-35.2009],[12,'O CANIL','Campina Grande','PB',2,-7.2306,-35.8811],[13,'PGS (Team Dash)','São Paulo','SP',2,-23.5505,-46.6333],[14,'Wavedash Arena','Ceará','CE',2,-3.7319,-38.5267],[15,'Sunset Arena','Rio de Janeiro','RJ',2,-22.9068,-43.1729],[16,'Bravos Guerreiros','Pernambuco','PE',2,-8.0476,-34.8770],[17,'Fightchê','Porto Alegre','RS',2,-30.0346,-51.2177],[18,'Golden Arena','Recife','PE',2,-8.0476,-34.8770],[19,'UPPER','São Paulo','SP',2,-23.5505,-46.6333],[20,'Komitê Games','São Paulo','SP',2,-23.5505,-46.6333],
-[21,'Bar Fight','São Paulo','SP',3,-23.5505,-46.6333],[22,'Égua do Fight','Belém do Pará','PA',3,-1.4558,-48.4902],[23,'Fliperama de verdades','Brasília','DF',3,-15.7939,-47.8828],[24,'Fighting Games Vale','São José dos Campos','SP',3,-23.1896,-45.8841],[25,'Arkdemia','Santa Rita','PB',3,-7.1139,-34.9780],[26,'Ultimate Cyber','Cuiabá','MT',3,-15.6014,-56.0979],[27,'Gamer City','Salvador','BA',3,-12.9777,-38.5016],[28,'FGC Mato Grosso','Cuiabá','MT',3,-15.6014,-56.0979],[29,'Legião Tapajós','Santarém','PA',3,-2.4385,-54.6996],[30,'Quebra torto','Campo Grande','MS',3,-20.4697,-54.6201],
-[31,'Cabugi Fighters','Natal','RN',4,-5.7793,-35.2009],[32,'Rosoyu League','Natal','RN',4,-5.7793,-35.2009],[33,'Hardcore Player 79','Aracaju','SE',4,-10.9472,-37.0731],[34,'Twilight Squad','Rio de Janeiro','RJ',4,-22.9068,-43.1729],[35,'Tekken PE Club','Recife','PE',4,-8.0476,-34.8770],[36,'Stan Game Show','Palmas','TO',4,-10.2491,-48.3243],[37,'GOAT GAMING HOUSE','Lucas do Rio Verde','MT',4,-13.0588,-55.9042],[38,'Smash Bahia','Salvador','BA',4,-12.9777,-38.5016],[39,'Try Hard Smash','Curitiba','PR',4,-25.4284,-49.2733],[40,'Cuca','Manaus','AM',4,-3.1190,-60.0217]
-].map(([id,name,city,state,part,lat,lng])=>({id,name,city,state,part,lat,lng}));
-const poiImageSlugs=["cosmic-zone","mini-major","tretinha","arena-ultra-arcade","r-dash","arc-aju","nit-fighter","arcademia","blame-the-beasts","capixaba-off","nasc","o-canil","pgs-team-dash","wavedash-arena","sunset-arena","bravos-guerreiros","fightche","golden-arena","upper","komite-games","bar-fight","egua-do-fight","fliperama-de-verdades","fighting-games-vale","arkdemia","ultimate-cyber","gamer-city","fgc-mato-grosso","legiao-tapajos","quebra-torto","cabugi-fighters","rosoyu-league","hardcore-player-79","twilight-squad","tekken-pe-club","stan-game-show","goat-gaming-house","smash-bahia","try-hard-smash","cuca"];places.forEach((p,i)=>p.imagePath='./assets/poi-images/poi-'+String(p.id).padStart(2,'0')+'-'+poiImageSlugs[i]+'.webp');
+const places = [
+  { id: 1, name: "Cosmic Zone", city: "Rio de Janeiro", state: 'RJ', sourcePart: 1, lat: -22.9068, lng: -43.1729, imageSlug: 'cosmic-zone' },
+  { id: 2, name: "Mini Major", city: "São Paulo", state: 'SP', sourcePart: 1, lat: -23.5505, lng: -46.6333, imageSlug: 'mini-major' },
+  { id: 3, name: "Tretinha", city: "Curitiba", state: 'PR', sourcePart: 1, lat: -25.4284, lng: -49.2733, imageSlug: 'tretinha' },
+  { id: 4, name: "Arena Ultra Arcade", city: "Belo Horizonte", state: 'MG', sourcePart: 1, lat: -19.9167, lng: -43.9345, imageSlug: 'arena-ultra-arcade' },
+  { id: 5, name: "R-DASH", city: "Recife", state: 'PE', sourcePart: 1, lat: -8.0476, lng: -34.877, imageSlug: 'r-dash' },
+  { id: 6, name: "ARC-AJU", city: "Aracaju", state: 'SE', sourcePart: 1, lat: -10.9472, lng: -37.0731, imageSlug: 'arc-aju' },
+  { id: 7, name: "Nit Fighter", city: "Niterói", state: 'RJ', sourcePart: 1, lat: -22.8832, lng: -43.1034, imageSlug: 'nit-fighter' },
+  { id: 8, name: "ARCADEMIA", city: "Curitiba", state: 'PR', sourcePart: 1, lat: -25.4284, lng: -49.2733, imageSlug: 'arcademia' },
+  { id: 9, name: "Blame the Beasts", city: "Campinas", state: 'SP', sourcePart: 1, lat: -22.9056, lng: -47.0608, imageSlug: 'blame-the-beasts' },
+  { id: 10, name: "Capixaba OFF", city: "Espírito Santo", state: 'ES', sourcePart: 1, lat: -20.3155, lng: -40.3128, imageSlug: 'capixaba-off' },
+  { id: 11, name: "NaSC", city: "Natal", state: 'RN', sourcePart: 2, lat: -5.7793, lng: -35.2009, imageSlug: 'nasc' },
+  { id: 12, name: "O CANIL", city: "Campina Grande", state: 'PB', sourcePart: 2, lat: -7.2306, lng: -35.8811, imageSlug: 'o-canil' },
+  { id: 13, name: "PGS (Team Dash)", city: "São Paulo", state: 'SP', sourcePart: 2, lat: -23.5505, lng: -46.6333, imageSlug: 'pgs-team-dash' },
+  { id: 14, name: "Wavedash Arena", city: "Ceará", state: 'CE', sourcePart: 2, lat: -3.7319, lng: -38.5267, imageSlug: 'wavedash-arena' },
+  { id: 15, name: "Sunset Arena", city: "Rio de Janeiro", state: 'RJ', sourcePart: 2, lat: -22.9068, lng: -43.1729, imageSlug: 'sunset-arena' },
+  { id: 16, name: "Bravos Guerreiros", city: "Pernambuco", state: 'PE', sourcePart: 2, lat: -8.0476, lng: -34.877, imageSlug: 'bravos-guerreiros' },
+  { id: 17, name: "Fightchê", city: "Porto Alegre", state: 'RS', sourcePart: 2, lat: -30.0346, lng: -51.2177, imageSlug: 'fightche' },
+  { id: 18, name: "Golden Arena", city: "Recife", state: 'PE', sourcePart: 2, lat: -8.0476, lng: -34.877, imageSlug: 'golden-arena' },
+  { id: 19, name: "UPPER", city: "São Paulo", state: 'SP', sourcePart: 2, lat: -23.5505, lng: -46.6333, imageSlug: 'upper' },
+  { id: 20, name: "Komitê Games", city: "São Paulo", state: 'SP', sourcePart: 2, lat: -23.5505, lng: -46.6333, imageSlug: 'komite-games' },
+  { id: 21, name: "Bar Fight", city: "São Paulo", state: 'SP', sourcePart: 3, lat: -23.5505, lng: -46.6333, imageSlug: 'bar-fight' },
+  { id: 22, name: "Égua do Fight", city: "Belém do Pará", state: 'PA', sourcePart: 3, lat: -1.4558, lng: -48.4902, imageSlug: 'egua-do-fight' },
+  { id: 23, name: "Fliperama de verdades", city: "Brasília", state: 'DF', sourcePart: 3, lat: -15.7939, lng: -47.8828, imageSlug: 'fliperama-de-verdades' },
+  { id: 24, name: "Fighting Games Vale", city: "São José dos Campos", state: 'SP', sourcePart: 3, lat: -23.1896, lng: -45.8841, imageSlug: 'fighting-games-vale' },
+  { id: 25, name: "Arkdemia", city: "Santa Rita", state: 'PB', sourcePart: 3, lat: -7.1139, lng: -34.978, imageSlug: 'arkdemia' },
+  { id: 26, name: "Ultimate Cyber", city: "Cuiabá", state: 'MT', sourcePart: 3, lat: -15.6014, lng: -56.0979, imageSlug: 'ultimate-cyber' },
+  { id: 27, name: "Gamer City", city: "Salvador", state: 'BA', sourcePart: 3, lat: -12.9777, lng: -38.5016, imageSlug: 'gamer-city' },
+  { id: 28, name: "FGC Mato Grosso", city: "Cuiabá", state: 'MT', sourcePart: 3, lat: -15.6014, lng: -56.0979, imageSlug: 'fgc-mato-grosso' },
+  { id: 29, name: "Legião Tapajós", city: "Santarém", state: 'PA', sourcePart: 3, lat: -2.4385, lng: -54.6996, imageSlug: 'legiao-tapajos' },
+  { id: 30, name: "Quebra torto", city: "Campo Grande", state: 'MS', sourcePart: 3, lat: -20.4697, lng: -54.6201, imageSlug: 'quebra-torto' },
+  { id: 31, name: "Cabugi Fighters", city: "Natal", state: 'RN', sourcePart: 4, lat: -5.7793, lng: -35.2009, imageSlug: 'cabugi-fighters' },
+  { id: 32, name: "Rosoyu League", city: "Natal", state: 'RN', sourcePart: 4, lat: -5.7793, lng: -35.2009, imageSlug: 'rosoyu-league' },
+  { id: 33, name: "Hardcore Player 79", city: "Aracaju", state: 'SE', sourcePart: 4, lat: -10.9472, lng: -37.0731, imageSlug: 'hardcore-player-79' },
+  { id: 34, name: "Twilight Squad", city: "Rio de Janeiro", state: 'RJ', sourcePart: 4, lat: -22.9068, lng: -43.1729, imageSlug: 'twilight-squad' },
+  { id: 35, name: "Tekken PE Club", city: "Recife", state: 'PE', sourcePart: 4, lat: -8.0476, lng: -34.877, imageSlug: 'tekken-pe-club' },
+  { id: 36, name: "Stan Game Show", city: "Palmas", state: 'TO', sourcePart: 4, lat: -10.2491, lng: -48.3243, imageSlug: 'stan-game-show' },
+  { id: 37, name: "GOAT GAMING HOUSE", city: "Lucas do Rio Verde", state: 'MT', sourcePart: 4, lat: -13.0588, lng: -55.9042, imageSlug: 'goat-gaming-house' },
+  { id: 38, name: "Smash Bahia", city: "Salvador", state: 'BA', sourcePart: 4, lat: -12.9777, lng: -38.5016, imageSlug: 'smash-bahia' },
+  { id: 39, name: "Try Hard Smash", city: "Curitiba", state: 'PR', sourcePart: 4, lat: -25.4284, lng: -49.2733, imageSlug: 'try-hard-smash' },
+  { id: 40, name: "Cuca", city: "Manaus", state: 'AM', sourcePart: 4, lat: -3.119, lng: -60.0217, imageSlug: 'cuca' }
+];
+
+places.forEach(place => {
+  place.imagePath = './assets/poi-images/poi-' + String(place.id).padStart(2, '0') + '-' + place.imageSlug + '.webp';
+});
