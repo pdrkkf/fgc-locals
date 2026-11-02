@@ -1,7 +1,7 @@
 {
   "naming": "poi-<id, 2 digits>-<slug>.webp",
   "dimensions": "480x360",
-  "fit": "contain; original aspect ratio preserved",
+  "fit": "contain; selected logos use content-focused crops on a 480x360 transparent canvas",
   "images": [
     {
       "id": 1,
@@ -9,7 +9,15 @@
       "filename": "poi-01-cosmic-zone.webp",
       "width": 480,
       "height": 360,
-      "source": "cosmic zone.webp"
+      "source": "cosmic zone.webp",
+      "crop": {
+        "source_bounds_xyxy": [
+          120,
+          118,
+          360,
+          250
+        ]
+      }
     },
     {
       "id": 2,
@@ -25,7 +33,15 @@
       "filename": "poi-03-tretinha.webp",
       "width": 480,
       "height": 360,
-      "source": "tretinha-curitiba-1200x630.png"
+      "source": "tretinha-curitiba-1200x630.png",
+      "crop": {
+        "source_bounds_xyxy": [
+          115,
+          110,
+          365,
+          250
+        ]
+      }
     },
     {
       "id": 4,
@@ -33,7 +49,15 @@
       "filename": "poi-04-arena-ultra-arcade.webp",
       "width": 480,
       "height": 360,
-      "source": "arena ultra arcade.png"
+      "source": "arena ultra arcade.png",
+      "crop": {
+        "source_bounds_xyxy": [
+          132,
+          95,
+          348,
+          270
+        ]
+      }
     },
     {
       "id": 5,
