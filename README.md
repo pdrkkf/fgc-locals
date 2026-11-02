@@ -6,6 +6,14 @@
 
 Mapa comunitário das locals de jogos de luta no Brasil. As posições são aproximadas pelo município informado nas referências.
 
+## Roadmap
+
+- **Versão mobile:** melhorar a experiência em celulares, incluindo navegação pelo mapa e acesso à lista de locais.
+- **Links e redes sociais:** adicionar aos locais links para redes sociais, comunidades e outras fontes com mais informações.
+- **Mantenedores:** encontrar pessoas da comunidade para ajudar a verificar e atualizar os dados, revisar contribuições e cuidar da evolução do projeto.
+
+As ideias não têm prazo definido. Contribuições e pessoas interessadas em ajudar são bem-vindas.
+
 ## Acesso e incorporação
 
 O site é estático e pode ser hospedado no GitHub Pages. Para publicar, envie o repositório para o GitHub na branch `main` e escolha **GitHub Actions** em **Settings → Pages**. O workflow `.github/workflows/pages.yml` publica o conteúdo de `dist/` a cada push na branch `main`.
