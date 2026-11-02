@@ -62,13 +62,11 @@ Preencha os campos assim:
 
 ### Logo do local
 
-1. Prepare uma imagem quadrada ou retangular em tela de **480 × 360 px (proporção 4:3)**.
-2. Salve em **WebP**, mantendo a proporção, centralizando a marca e recortando o excesso de margem. Evite adicionar faixas brancas ou verdes. Use fundo transparente quando fizer sentido para a logo.
-3. Salve em `dist/assets/poi-images/` com o padrão `poi-<id com 2 dígitos>-<slug>.webp`. Exemplo: `poi-41-nova-local.webp`.
-4. Acrescente o slug correspondente ao final do array `poiImageSlugs` em `dist/index.html`, na mesma ordem do novo registro em `places`.
-5. Acrescente a imagem em `dist/assets/poi-images/manifest.json`, informando `id`, `name`, `filename`, `width`, `height` e a origem da imagem em `source`. Se a imagem tiver sido recortada, registre também o recorte.
+1. Prepare a imagem em WebP, com **480 × 360 px**. Recorte margens excessivas; use transparência quando combinar com a logo.
+2. Salve em `dist/assets/poi-images/` como `poi-<id com 2 dígitos>-<slug>.webp`. Exemplo: `poi-41-nova-local.webp`.
+3. Adicione o mesmo slug ao array `poiImageSlugs`, na mesma posição do local em `places`.
 
-Cada registro em `places` deve ter um slug na mesma posição em `poiImageSlugs`. Ao terminar, confira se o `id` bate com o nome do arquivo, se a quantidade de registros e slugs é igual e se a logo aparece no mapa e na lista.
+O `manifest.json` é apenas um catálogo e não é necessário para o mapa carregar a imagem. Atualize-o se quiser registrar a origem da logo.
 
 ### Informações para registrar
 
