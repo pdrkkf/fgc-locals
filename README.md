@@ -16,36 +16,30 @@ As ideias não têm prazo definido. Contribuições e pessoas interessadas em aj
 
 ## Acesso e incorporação
 
-O site é estático e pode ser hospedado no GitHub Pages. Para publicar, envie o repositório para o GitHub na branch `main` e escolha **GitHub Actions** em **Settings → Pages**. O workflow `.github/workflows/pages.yml` publica o conteúdo de `dist/` a cada push na branch `main`.
+O mapa pode ser incorporado diretamente por uma URL de embed ou dentro de um `iframe`. Use estes parâmetros para configurar a exibição:
 
-Para abrir o mapa em modo compacto, use `?embed=1`. O tema inicial é configurado pelo parâmetro `theme`:
+| Parâmetro | Valores | Descrição |
+| --- | --- | --- |
+| `embed` | `1` | Abre o mapa em modo compacto, próprio para incorporação. |
+| `theme` | `blue`, `red` ou `yellow` | Define o tema inicial do mapa. |
+| `hide` | `theme` | Oculta o seletor de tema. Use junto com `embed=1`; o tema informado em `theme` continua aplicado. |
 
-| Valor | Tema |
-| --- | --- |
-| `blue` | Azul |
-| `red` | Vermelho |
-| `yellow` | Amarelo |
-
-Exemplo de URL:
+### URL de embed direto
 
 ```text
-https://pdrkkf.github.io/fgc-locals/?embed=1&theme=red
+https://pdrkkf.github.io/fgc-locals/?embed=1&theme=blue&hide=theme
 ```
 
-Exemplo de iframe:
+### Incorporação via iframe
 
 ```html
 <iframe
-  src="https://pdrkkf.github.io/fgc-locals/?embed=1&theme=blue"
+  src="https://pdrkkf.github.io/fgc-locals/?embed=1&theme=red&hide=theme"
   title="Mapa de locals da FGC no Brasil"
   loading="lazy"
   style="width:100%;height:680px;border:0;border-radius:8px"
 ></iframe>
 ```
-
-Troque `blue` por `red` ou `yellow` para definir outro tema. Cada embed inicia no tema indicado na URL.
-
-Para ocultar o seletor de tema no embed, acrescente `hide=theme` à URL. O tema indicado em `theme` continua sendo aplicado, mas o controle não aparece. Exemplo: `?embed=1&theme=blue&hide=theme`.
 
 ## Como adicionar um local
 
@@ -111,7 +105,3 @@ As logos, marcas e demais imagens exibidas pertencem aos seus respectivos donos,
 ## Licença
 
 O código e a documentação deste projeto são distribuídos sob a licença **MIT**. O uso e as alterações são gratuitos; você pode copiar, modificar e redistribuir esse material, mantendo o aviso de copyright e o texto da licença. Consulte [`LICENSE`](LICENSE). A licença MIT não cobre as logos, marcas ou outros materiais de terceiros descritos acima.
-
-## Desenvolvimento local
-
-Sirva a pasta `dist/` com um servidor HTTP local. A página carrega `states.geojson` e as imagens por caminhos relativos; abrir `index.html` diretamente via `file://` pode impedir o carregamento desses arquivos.
