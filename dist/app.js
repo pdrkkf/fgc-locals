@@ -3,35 +3,15 @@ const stateCodes={'11':'RO','12':'AC','13':'AM','14':'RR','15':'PA','16':'AP','1
 
 const stateSelect=document.getElementById('stateSelect'),cards=document.getElementById('cards');let selectedState='all',selectedPlace=null;const themeKey='fgc-map-theme',validThemes=['blue','red','yellow'],query=new URLSearchParams(location.search),embedMode=query.has('embed'),requestedTheme=query.get('theme')||query.get('tema');if(embedMode)document.body.classList.add('embed-mode');if(embedMode&&(query.get('hide')||'').split(',').some(value=>value.trim().toLowerCase()==='theme'))document.body.classList.add('hide-theme-selector');let savedTheme=null;try{savedTheme=localStorage.getItem(themeKey)}catch{}const initialTheme=validThemes.includes(requestedTheme)?requestedTheme:(validThemes.includes(savedTheme)?savedTheme:'blue');document.body.dataset.theme=initialTheme;document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===initialTheme)));
 function applyTheme(theme){if(!validThemes.includes(theme))return;document.body.dataset.theme=theme;if(!embedMode){try{localStorage.setItem(themeKey,theme)}catch{}}document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)));stateLayers.forEach((layer,code)=>{layer.setStyle(styleState(layer.feature));layer.getElement()?.classList.toggle("state-selected",selectedState===code)});}document.querySelectorAll('[data-theme-choice]').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.themeChoice)));const map=L.map('map',{zoomControl:true,scrollWheelZoom:true,attributionControl:false,preferCanvas:false,zoomSnap:.25,maxBoundsViscosity:.9}).setView([-14.3,-52.2],4);const statesLayer=L.featureGroup().addTo(map),stateLayers=new Map(),cityMarkers=new Map(),visibleMarkers=L.featureGroup().addTo(map);let geoData=null,markerScale=1,viewRevision=0;function constrainMap(){if(!geoData)return;const bounds=statesLayer.getBounds();map.setMaxBounds(bounds.pad(.16));map.setMinZoom(Math.max(3,map.getBoundsZoom(bounds,false,[18,18])-.5));}function fitBrazil(){map.fitBounds(statesLayer.getBounds(),{padding:[28,28],animate:false});}function queueStateView(code){const layer=stateLayers.get(code);if(layer)map.fitBounds(layer.getBounds(),{padding:[45,45],maxZoom:7,animate:false});}function styleState(feature){const code=stateCodes[String(feature.properties.codarea)],count=places.filter(p=>p.state===code).length,cs=getComputedStyle(document.body),stroke=cs.getPropertyValue('--state-stroke').trim(),activeStroke=cs.getPropertyValue('--lime').trim(),active=selectedState===code;if(!count)return{color:stroke,weight:1,opacity:.72,fillColor:cs.getPropertyValue('--state-empty').trim(),fillOpacity:.82};return{color:active?activeStroke:stroke,weight:active?3.6:1.2,opacity:1,fillColor:active?cs.getPropertyValue('--state-active').trim():cs.getPropertyValue('--state-has').trim(),fillOpacity:active?1:.95};}
-const stateCapitals={AC:'Rio Branco',AL:'Maceió',AP:'Macapá',AM:'Manaus',BA:'Salvador',CE:'Fortaleza',DF:'Brasília',ES:'Vitória',GO:'Goiânia',MA:'São Luís',MT:'Cuiabá',MS:'Campo Grande',MG:'Belo Horizonte',PA:'Belém',PB:'João Pessoa',PR:'Curitiba',PE:'Recife',PI:'Teresina',RJ:'Rio de Janeiro',RN:'Natal',RS:'Porto Alegre',RO:'Porto Velho',RR:'Boa Vista',SC:'Florianópolis',SP:'São Paulo',SE:'Aracaju',TO:'Palmas'},capitalAliases={ES:['Espírito Santo'],PA:['Belém do Pará'],CE:['Ceará'],PE:['Pernambuco']};function normalizeCity(value){return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR')}function isCapitalCity(city,state){const target=normalizeCity(city);return target===normalizeCity(stateCapitals[state])||(capitalAliases[state]||[]).some(name=>target===normalizeCity(name))}function groupCities(items){const groups=new Map();items.forEach(p=>{const k=`${p.state}:${p.lat.toFixed(3)}:${p.lng.toFixed(3)}`;if(!groups.has(k))groups.set(k,{key:k,city:p.city,state:p.state,lat:p.lat,lng:p.lng,isCapital:isCapitalCity(p.city,p.state),items:[]});groups.get(k).items.push(p)});return[...groups.values()]}
+const stateCapitals={AC:'Rio Branco',AL:'Maceió',AP:'Macapá',AM:'Manaus',BA:'Salvador',CE:'Fortaleza',DF:'Brasília',ES:'Vitória',GO:'Goiânia',MA:'São Luís',MT:'Cuiabá',MS:'Campo Grande',MG:'Belo Horizonte',PA:'Belém',PB:'João Pessoa',PR:'Curitiba',PE:'Recife',PI:'Teresina',RJ:'Rio de Janeiro',RN:'Natal',RS:'Porto Alegre',RO:'Porto Velho',RR:'Boa Vista',SC:'Florianópolis',SP:'São Paulo',SE:'Aracaju',TO:'Palmas'},capitalAliases={PA:['Belém do Pará']};function normalizeCity(value){return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR')}function isCapitalCity(city,state){const target=normalizeCity(city);return target===normalizeCity(stateCapitals[state])||(capitalAliases[state]||[]).some(name=>target===normalizeCity(name))}function cityGroupKey(place){return `${place.state}:${place.lat.toFixed(3)}:${place.lng.toFixed(3)}`}function groupCities(items){const groups=new Map();items.forEach(p=>{const k=cityGroupKey(p);if(!groups.has(k))groups.set(k,{key:k,city:p.city,state:p.state,lat:p.lat,lng:p.lng,isCapital:true,locationScope:null,cities:new Set(),items:[]});const group=groups.get(k);group.cities.add(p.city);group.locationScope=group.locationScope||p.locationScope;if(p.locationScope||!isCapitalCity(p.city,p.state))group.isCapital=false;group.items.push(p)});return[...groups.values()].map(group=>({...group,city:[...group.cities].join(' / ')}))}
 function cityMarkerSize(count){return Math.round((count>1?34:30)*markerScale)}
 function cityIcon(count,isCapital){const size=cityMarkerSize(count);return L.divIcon({className:'',html:'<span class="citypin '+(isCapital?'capital':'non-capital')+'" style="width:'+size+'px;height:'+size+'px">'+count+'</span>',iconSize:[size,size],iconAnchor:[size/2,size/2]});}
 let visibleCityItems=places;
-function compactCityIcon(groups){const gap=Math.round(9*markerScale),sizes=groups.map(g=>cityMarkerSize(g.items.length)),width=sizes.reduce((a,b)=>a+b,0)+gap*(groups.length-1),height=Math.max(...sizes),chips=groups.map((g,i)=>'<span class="citypin '+(g.isCapital?'capital':'non-capital')+'" style="width:'+sizes[i]+'px;height:'+sizes[i]+'px">'+g.items.length+'</span>').join('');return L.divIcon({className:'compact-cluster-icon',html:'<span class="compact-cluster-pin">'+chips+'</span>',iconSize:[width,height],iconAnchor:[width/2,height/2]});}
 function unifiedCityIcon(count){const size=Math.round(38*markerScale);return L.divIcon({className:'unified-cluster-icon',html:'<span class="unified-cluster-pin">'+count+'</span>',iconSize:[size,size],iconAnchor:[size/2,size/2]});}
 function nearbyCityGroups(groups) {
-  const radius = (map.getZoom() < 6 ? 64 : 42) * markerScale;
+  const radius = 76 * markerScale;
   const points = groups.map(group => map.latLngToLayerPoint([group.lat, group.lng]));
-  const visited = new Set();
-  const clusters = [];
-
-  for (let i = 0; i < groups.length; i++) {
-    if (visited.has(i)) continue;
-
-    const indexes = [i];
-    visited.add(i);
-    for (let cursor = 0; cursor < indexes.length; cursor++) {
-      const current = indexes[cursor];
-      for (let j = 0; j < groups.length; j++) {
-        if (visited.has(j) || !(points[current].distanceTo(points[j]) <= radius)) continue;
-        visited.add(j);
-        indexes.push(j);
-      }
-    }
-    clusters.push(indexes.map(index => groups[index]));
-  }
-
-  return clusters;
+  return groupNearbyPoints(groups, points, radius);
 }
 
 function renderCityMarkers() {
@@ -42,28 +22,19 @@ function renderCityMarkers() {
   nearbyCityGroups(groups).forEach(cluster => {
     const total = cluster.reduce((sum, group) => sum + group.items.length, 0);
     const isNearby = cluster.length > 1;
-    const point = cluster
-      .reduce((sum, group) => sum.add(map.latLngToLayerPoint([group.lat, group.lng])), L.point(0, 0))
-      .divideBy(cluster.length);
-    const latlng = isNearby
-      ? map.layerPointToLatLng(point)
-      : [cluster[0].lat, cluster[0].lng];
+    const latlng = [cluster[0].lat, cluster[0].lng];
     const localLabel = total === 1 ? 'local' : 'locals';
     const title = isNearby
       ? map.getZoom() < 6
         ? `${total} ${localLabel} em ${cluster.length} cidades`
         : `${cluster.length} cidades próximas · ${total} ${localLabel}`
       : `${cluster[0].city}: ${total} ${localLabel}`;
-    const icon = isNearby
-      ? map.getZoom() < 6
-        ? unifiedCityIcon(total)
-        : compactCityIcon(cluster)
-      : cityIcon(total, cluster[0].isCapital);
+    const icon = isNearby ? unifiedCityIcon(total) : cityIcon(total, cluster[0].isCapital);
     const marker = L.marker(latlng, { icon, title });
 
     const sections = cluster.map(group => {
-      const type = group.isCapital ? 'capital' : 'non-capital';
-      const typeLabel = group.isCapital ? 'Capital' : 'Outra cidade';
+      const type = group.locationScope ? 'unverified' : group.isCapital ? 'capital' : 'non-capital';
+      const typeLabel = group.locationScope ? 'Localização não verificada' : group.isCapital ? 'Capital' : 'Outra cidade';
       const placeLinks = group.items
         .map(place => `<button class="venue-link" data-id="${place.id}">${place.name}</button>`)
         .join('');
@@ -161,7 +132,7 @@ function focusPlace(id) {
     card.classList.toggle('active', Number(card.dataset.id) === id);
   });
   cards.querySelector(`.card[data-id="${id}"]`)?.scrollIntoView({ block: 'nearest' });
-  const markerKey = `${place.state}:${place.lat.toFixed(3)}:${place.lng.toFixed(3)}`;
+  const markerKey = cityGroupKey(place);
   const target = L.latLng(place.lat, place.lng);
   const targetZoom = Math.max(map.getZoom(), 8);
   const openPopup = () => cityMarkers.get(markerKey)?.openPopup();

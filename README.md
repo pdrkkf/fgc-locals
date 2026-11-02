@@ -76,6 +76,7 @@ dist/
 ├── styles.css                   # Temas e estilos responsivos
 ├── app.js                       # Mapa, interação, filtros e marcadores
 ├── places.js                    # Registros dos locais
+├── clustering.js                # Agrupamento de pontos em pixels
 ├── states.geojson               # Limites estaduais usados pelo mapa
 └── assets/poi-images/
     ├── manifest.json            # Índice, dimensões e origem das logos
@@ -83,7 +84,10 @@ dist/
 .github/workflows/pages.yml      # Publicação automática no GitHub Pages
 LICENSE                          # Licença MIT do código e da documentação
 THIRD_PARTY_NOTICES.md           # Aviso e licença da biblioteca Leaflet
+test/clustering.test.js          # Testes do agrupamento de marcadores
 ```
+
+Execute os testes do agrupamento com `node --test`.
 
 ## Créditos e dependências
 
@@ -93,7 +97,7 @@ O mapa usa [Leaflet 1.9.4](https://leafletjs.com/) para a interface cartográfic
 
 ### Aviso sobre logos e marcas
 
-As logos, marcas e demais imagens exibidas pertencem aos seus respectivos donos, que mantêm todos os direitos sobre esses materiais. Elas são usadas no mapa apenas para identificar os locais. A licença MIT deste projeto não concede autorização para copiar, modificar ou redistribuir essas logos e marcas; consulte os titulares para obter permissão de uso. O arquivo `dist/states.geojson` não contém metadados que identifiquem a fonte cartográfica original; antes de substituir ou redistribuir esses limites separadamente, confirme e registre a fonte e as condições aplicáveis.
+As logos, marcas e demais imagens exibidas pertencem aos seus respectivos donos, que mantêm todos os direitos sobre esses materiais. Elas são usadas no mapa apenas para identificar os locais. A licença MIT deste projeto não concede autorização para copiar, modificar ou redistribuir essas logos e marcas; consulte os titulares para obter permissão de uso. O arquivo `dist/states.geojson` não contém metadados de origem ou licença, e o histórico Git disponível não identifica a fonte cartográfica. A procedência e as condições de redistribuição dos limites permanecem não verificadas.
 
 ## Licença
 
