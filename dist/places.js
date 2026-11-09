@@ -14,7 +14,7 @@ const places = [
   { id: 13, name: "PGS (Team Dash)", city: "São Paulo", state: 'SP', sourcePart: 2, lat: -23.5505, lng: -46.6333, imageSlug: 'pgs-team-dash' },
   { id: 14, name: "Wavedash Arena", city: "Ceará", state: 'CE', sourcePart: 2, lat: -3.7319, lng: -38.5267, imageSlug: 'wavedash-arena', locationScope: 'unverified' },
   { id: 15, name: "Sunset Arena", city: "Rio de Janeiro", state: 'RJ', sourcePart: 2, lat: -22.9068, lng: -43.1729, imageSlug: 'sunset-arena' },
-  { id: 16, name: "Bravos Guerreiros", city: "Pernambuco", state: 'PE', sourcePart: 2, lat: -8.0476, lng: -34.877, imageSlug: 'bravos-guerreiros', locationScope: 'unverified' },
+  { id: 16, name: "Bravos Guerreiros", city: "Recife", state: 'PE', sourcePart: 2, lat: -8.0476, lng: -34.877, imageSlug: 'bravos-guerreiros' },
   { id: 17, name: "Fightchê", city: "Porto Alegre", state: 'RS', sourcePart: 2, lat: -30.0346, lng: -51.2177, imageSlug: 'fightche' },
   { id: 18, name: "Golden Arena", city: "Recife", state: 'PE', sourcePart: 2, lat: -8.0476, lng: -34.877, imageSlug: 'golden-arena' },
   { id: 19, name: "UPPER", city: "São Paulo", state: 'SP', sourcePart: 2, lat: -23.5505, lng: -46.6333, imageSlug: 'upper' },
