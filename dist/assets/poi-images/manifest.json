@@ -9,7 +9,6 @@
       "filename": "poi-01-cosmic-zone.webp",
       "width": 480,
       "height": 360,
-      "source": "cosmic zone.webp",
       "crop": {
         "source_bounds_xyxy": [
           120,
@@ -24,8 +23,7 @@
       "name": "mini-major",
       "filename": "poi-02-mini-major.webp",
       "width": 480,
-      "height": 360,
-      "source": "mini major.png"
+      "height": 360
     },
     {
       "id": 3,
@@ -33,7 +31,6 @@
       "filename": "poi-03-tretinha.webp",
       "width": 480,
       "height": 360,
-      "source": "tretinha-curitiba-1200x630.png",
       "crop": {
         "source_bounds_xyxy": [
           115,
@@ -49,7 +46,6 @@
       "filename": "poi-04-arena-ultra-arcade.webp",
       "width": 480,
       "height": 360,
-      "source": "arena ultra arcade.png",
       "crop": {
         "source_bounds_xyxy": [
           132,
@@ -64,288 +60,252 @@
       "name": "r-dash",
       "filename": "poi-05-r-dash.webp",
       "width": 480,
-      "height": 360,
-      "source": "r dash.jpg"
+      "height": 360
     },
     {
       "id": 6,
       "name": "arc-aju",
       "filename": "poi-06-arc-aju.webp",
       "width": 480,
-      "height": 360,
-      "source": "arc-aju.jpg"
+      "height": 360
     },
     {
       "id": 7,
       "name": "nit-fighter",
       "filename": "poi-07-nit-fighter.webp",
       "width": 480,
-      "height": 360,
-      "source": "nit fighter.jpg"
+      "height": 360
     },
     {
       "id": 8,
       "name": "arcademia",
       "filename": "poi-08-arcademia.webp",
       "width": 480,
-      "height": 360,
-      "source": "arcademia.jpg"
+      "height": 360
     },
     {
       "id": 9,
       "name": "blame-the-beasts",
       "filename": "poi-09-blame-the-beasts.webp",
       "width": 480,
-      "height": 360,
-      "source": "blame the beasts.jpg"
+      "height": 360
     },
     {
       "id": 10,
       "name": "capixaba-off",
       "filename": "poi-10-capixaba-off.webp",
       "width": 480,
-      "height": 360,
-      "source": "user-provided updated Capixaba OFF logo"
+      "height": 360
     },
     {
       "id": 11,
       "name": "nasc",
       "filename": "poi-11-nasc.webp",
       "width": 480,
-      "height": 360,
-      "source": "crop from Locals no Brasil, parte 2 poster; supplied NaSC.paint is unsupported HEIF"
+      "height": 360
     },
     {
       "id": 12,
       "name": "o-canil",
       "filename": "poi-12-o-canil.webp",
       "width": 480,
-      "height": 360,
-      "source": "o canil.png"
+      "height": 360
     },
     {
       "id": 13,
       "name": "pgs-team-dash",
       "filename": "poi-13-pgs-team-dash.webp",
       "width": 480,
-      "height": 360,
-      "source": "team dash brasil.jpg"
+      "height": 360
     },
     {
       "id": 14,
       "name": "wavedash-arena",
       "filename": "poi-14-wavedash-arena.webp",
       "width": 480,
-      "height": 360,
-      "source": "logo crop from Locals no Brasil, parte 2 poster"
+      "height": 360
     },
     {
       "id": 15,
       "name": "sunset-arena",
       "filename": "poi-15-sunset-arena.webp",
       "width": 480,
-      "height": 360,
-      "source": "sunset arena.png"
+      "height": 360
     },
     {
       "id": 16,
       "name": "bravos-guerreiros",
       "filename": "poi-16-bravos-guerreiros.webp",
       "width": 480,
-      "height": 360,
-      "source": "Bravos Guerreiros.png"
+      "height": 360
     },
     {
       "id": 17,
       "name": "fightche",
       "filename": "poi-17-fightche.webp",
       "width": 480,
-      "height": 360,
-      "source": "Fightche.jpg"
+      "height": 360
     },
     {
       "id": 18,
       "name": "golden-arena",
       "filename": "poi-18-golden-arena.webp",
       "width": 480,
-      "height": 360,
-      "source": "golden arena.jpg"
+      "height": 360
     },
     {
       "id": 19,
       "name": "upper",
       "filename": "poi-19-upper.webp",
       "width": 480,
-      "height": 360,
-      "source": "UPPER.png"
+      "height": 360
     },
     {
       "id": 20,
       "name": "komite-games",
       "filename": "poi-20-komite-games.webp",
       "width": 480,
-      "height": 360,
-      "source": "komite games.jpg"
+      "height": 360
     },
     {
       "id": 21,
       "name": "bar-fight",
       "filename": "poi-21-bar-fight.webp",
       "width": 480,
-      "height": 360,
-      "source": "bar fight.png"
+      "height": 360
     },
     {
       "id": 22,
       "name": "egua-do-fight",
       "filename": "poi-22-egua-do-fight.webp",
       "width": 480,
-      "height": 360,
-      "source": "egua do fight.jpg"
+      "height": 360
     },
     {
       "id": 23,
       "name": "fliperama-de-verdades",
       "filename": "poi-23-fliperama-de-verdades.webp",
       "width": 480,
-      "height": 360,
-      "source": "fliperama de verdades.jpg"
+      "height": 360
     },
     {
       "id": 24,
       "name": "fighting-games-vale",
       "filename": "poi-24-fighting-games-vale.webp",
       "width": 480,
-      "height": 360,
-      "source": "fighting games vale.jpg"
+      "height": 360
     },
     {
       "id": 25,
       "name": "arkdemia",
       "filename": "poi-25-arkdemia.webp",
       "width": 480,
-      "height": 360,
-      "source": "arkdemia.jpg"
+      "height": 360
     },
     {
       "id": 26,
       "name": "ultimate-cyber",
       "filename": "poi-26-ultimate-cyber.webp",
       "width": 480,
-      "height": 360,
-      "source": "ultimate cyber.jpg"
+      "height": 360
     },
     {
       "id": 27,
       "name": "gamer-city",
       "filename": "poi-27-gamer-city.webp",
       "width": 480,
-      "height": 360,
-      "source": "crop from Locals no Brasil, parte 3 poster"
+      "height": 360
     },
     {
       "id": 28,
       "name": "fgc-mato-grosso",
       "filename": "poi-28-fgc-mato-grosso.webp",
       "width": 480,
-      "height": 360,
-      "source": "fgc mato grosso.jpg"
+      "height": 360
     },
     {
       "id": 29,
       "name": "legiao-tapajos",
       "filename": "poi-29-legiao-tapajos.webp",
       "width": 480,
-      "height": 360,
-      "source": "legiao tapajos.jpg"
+      "height": 360
     },
     {
       "id": 30,
       "name": "quebra-torto",
       "filename": "poi-30-quebra-torto.webp",
       "width": 480,
-      "height": 360,
-      "source": "quebra torto.png"
+      "height": 360
     },
     {
       "id": 31,
       "name": "cabugi-fighters",
       "filename": "poi-31-cabugi-fighters.webp",
       "width": 480,
-      "height": 360,
-      "source": "cabugi fighters.jpg"
+      "height": 360
     },
     {
       "id": 32,
       "name": "rosoyu-league",
       "filename": "poi-32-rosoyu-league.webp",
       "width": 480,
-      "height": 360,
-      "source": "rosoyu league.jpg"
+      "height": 360
     },
     {
       "id": 33,
       "name": "hardcore-player-79",
       "filename": "poi-33-hardcore-player-79.webp",
       "width": 480,
-      "height": 360,
-      "source": "hardcore player 79.jpg"
+      "height": 360
     },
     {
       "id": 34,
       "name": "twilight-squad",
       "filename": "poi-34-twilight-squad.webp",
       "width": 480,
-      "height": 360,
-      "source": "twilight squad.jpg"
+      "height": 360
     },
     {
       "id": 35,
       "name": "tekken-pe-club",
       "filename": "poi-35-tekken-pe-club.webp",
       "width": 480,
-      "height": 360,
-      "source": "tekken pe club.jpg"
+      "height": 360
     },
     {
       "id": 36,
       "name": "stan-game-show",
       "filename": "poi-36-stan-game-show.webp",
       "width": 480,
-      "height": 360,
-      "source": "stan game show.png"
+      "height": 360
     },
     {
       "id": 37,
       "name": "goat-gaming-house",
       "filename": "poi-37-goat-gaming-house.webp",
       "width": 480,
-      "height": 360,
-      "source": "goat gaming house.jpg"
+      "height": 360
     },
     {
       "id": 38,
       "name": "smash-bahia",
       "filename": "poi-38-smash-bahia.webp",
       "width": 480,
-      "height": 360,
-      "source": "smash bahia.jpg"
+      "height": 360
     },
     {
       "id": 39,
       "name": "try-hard-smash",
       "filename": "poi-39-try-hard-smash.webp",
       "width": 480,
-      "height": 360,
-      "source": "try hard smash.jpg"
+      "height": 360
     },
     {
       "id": 40,
       "name": "cuca",
       "filename": "poi-40-cuca.webp",
       "width": 480,
-      "height": 360,
-      "source": "cuca.png"
+      "height": 360
     }
   ]
 }
